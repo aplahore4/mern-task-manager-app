@@ -22,7 +22,11 @@ mongoose
 // Middleware
 app.use(express.json());
 app.use(express.urlencoded());
-app.use(cors());
+app.use(
+  cors({
+    origin: [process.env.cors_local_URL, process.env.cors_live_URL],
+  })
+);
 
 app.use('/api/task', taskRoute);
 
